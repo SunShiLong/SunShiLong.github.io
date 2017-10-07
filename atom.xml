@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://SunShiLong.github.io/"/>
-  <updated>2017-10-07T07:51:06.000Z</updated>
+  <updated>2017-10-07T07:51:03.000Z</updated>
   <id>http://SunShiLong.github.io/</id>
   
   <author>
@@ -15,30 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hexo博客 新手安装及使用教程</title>
-    <link href="http://SunShiLong.github.io/2017/10/07/Hexo%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://SunShiLong.github.io/2017/10/07/Hexo博客/</id>
-    <published>2017-10-07T06:46:55.000Z</published>
-    <updated>2017-10-07T07:51:06.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一篇基于Github搭建Hexo博客的基础教程，内容有：资源下载、安装步骤、发布更新文章、更换主题</p><h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><h3 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h3><ol><li>node.js ，<a href="https://nodejs.org/en/" target="_blank" rel="external">官网下载地址</a>,选择下一步安装即可。</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;这是一篇基于Github搭建Hexo博客的基础教程，内容有：资源下载、安装步骤、发布更新文章、更换主题&lt;/p&gt;
-&lt;h2 id=&quot;资源下载&quot;&gt;&lt;a href=&quot;#资源下载&quot; class=&quot;headerlink&quot; title=&quot;资源下载&quot;&gt;&lt;/a&gt;资源下载&lt;/h2&gt;&lt;h3 id
-      
-    
-    </summary>
-    
-    
-      <category term="教程" scheme="http://SunShiLong.github.io/tags/%E6%95%99%E7%A8%8B/"/>
-    
-  </entry>
   
   <entry>
     <title>Hello World</title>
