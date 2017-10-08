@@ -1,187 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="孙世龙">
-    
-    <meta name="description" content="孙世龙在 Github 上的个人博客">
-    
-    
-    
-    
-    
-    
-    <title>Hexo博客 新手安装及使用教程 | 学不车</title>
-    <!-- inject:style -->
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <!-- endinject -->
-    <style>
-        .cube-loading {
-            top: 0;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: url('/images/lg/loading.gif') no-repeat center center;
-            background-color: rgba(0,0,0,.7);
-        }
+  <meta charset="utf-8">
+  
+  <title>Hexo博客 新手安装及使用教程 | 学不车</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="这是一篇基于Github搭建Hexo博客的基础教程，内容有：资源下载、安装步骤、发布更新文章、更换主题 资源下载node.js node.js ，官网下载地址,下载完成，双击打开，选择下一步安装即可。注：尽量下载最新版本，避免报错。  Git Xcode自带Git  安装步骤更换npm源Node Package Manager 是node.js的模块依赖管理工具，由于国内有墙，使用时多有不便，国内">
+<meta name="keywords" content="教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客 新手安装及使用教程">
+<meta property="og:url" content="http://SunShiLong.github.io/2017/10/07/Hexo博客/index.html">
+<meta property="og:site_name" content="学不车">
+<meta property="og:description" content="这是一篇基于Github搭建Hexo博客的基础教程，内容有：资源下载、安装步骤、发布更新文章、更换主题 资源下载node.js node.js ，官网下载地址,下载完成，双击打开，选择下一步安装即可。注：尽量下载最新版本，避免报错。  Git Xcode自带Git  安装步骤更换npm源Node Package Manager 是node.js的模块依赖管理工具，由于国内有墙，使用时多有不便，国内">
+<meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/hexoHome.png">
+<meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/gitBranch.png">
+<meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/macdown.png">
+<meta property="og:updated_time" content="2017-10-08T02:11:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客 新手安装及使用教程">
+<meta name="twitter:description" content="这是一篇基于Github搭建Hexo博客的基础教程，内容有：资源下载、安装步骤、发布更新文章、更换主题 资源下载node.js node.js ，官网下载地址,下载完成，双击打开，选择下一步安装即可。注：尽量下载最新版本，避免报错。  Git Xcode自带Git  安装步骤更换npm源Node Package Manager 是node.js的模块依赖管理工具，由于国内有墙，使用时多有不便，国内">
+<meta name="twitter:image" content="http://oxftt42c0.bkt.clouddn.com/hexoHome.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
 
-        .cube-loading.out {
-            display: none;
-        }
+  
+  
 
-        .cube-loading:before {
-            display: block;
-            content: 'Loading';
-            position: relative;
-            width: 100%;
-            top: 50%;
-            right: -50%;
-            color: #fff;
-        }
-
-        @media(max-width: 768px) {
-            .cube-loading:before {
-                font-size: 1.2em;
-                transform: translate(-24px,20px);
-                -webkit-transform: translate(-24px,20px);
-                -o-transform: translate(-24px,20px);
-                -ms-transform: translate(-24px,20px);
-            }
-        }
-
-        @media(min-width: 768px) {
-            .cube-loading:before {
-
-            }
-        }
-    </style>
-    
 </head>
+
 <body>
-<div class="cube-body">
-    <nav id="cube-top-memu" class="cube-menu">
-    <ul class="cube-menu-collapse">
-        
-        <li>
-            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
-            <a href="/">首页</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
-            <a href="/archives">归档</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
-            <a href="/categories">分类</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
-            <a href="/tags">标签</a>
-        </li>
-        
-        <li>
-            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
-            <a href="/about-me">关于我</a>
-        </li>
-        
-    </ul>
-</nav>
-<nav class="cube-side-menu" id="cube-side-menu">
-    <ul class="cube-menu-list">
-        
-        <li>
-            <a class="lrc-control">Open Lyrics</a>
-        </li>
-        
-        <li>
-            <a class="scroll-to-top">Top</a>
-        </li>
-    </ul>
-</nav>
-    <header class="cube-header" id="cube-header">
-    <img src=" http://cube-1252774894.cosgz.myqcloud.com/background.png " alt="头部背景图片">
-    
-    <div class="cube-type">
-        <span class="cube-typed-title">senrenbankaの部落格</span>
-        <span class="cube-typed-cursor">|</span>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MinHow&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MinHow&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
+        </div>
     </div>
-    
 </header>
-
-    <style>
-        nav.cube-menu:before {
-            content: '';
-            visibility: hidden;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 44px;
-        
-            filter: blur(5px);
-            -webkit-filter: blur(5px);
-        
-            z-index: -1;
-            background-image: url('http://cube-1252774894.cosgz.myqcloud.com/background.png');
-            background-repeat: no-repeat;
-            background-position: center -356px;
-            background-size: cover;
-            background-color: transparent;
-        }
-
-        header.cube-background.cube-header-background {
-            visibility: hidden;
-            background-image: url('http://cube-1252774894.cosgz.myqcloud.com/background.png');
-            background-position: center -400px;
-        }
-    </style>
-    <header class="cube-background cube-header-background">
-        
-        <div class="cube-type">
-            <span class="cube-typed-title">senrenbankaの部落格</span>
-            <span class="cube-typed-cursor">|</span>
-        </div>
-        
-    </header>
-    <div class="load-header-background"></div>
-    <script>
-        (function (window) {
-
-            window.headerModule = {}
-            window.headerModule.image = {
-                width: '2000',
-                height: '1414'
-            }
-
-        })(window)
-    </script>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Hexo博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    <div class="cube-content">
-        <div class="cube-left">
-            <div class="cube-article">
-    <h1 class="title">Hexo博客 新手安装及使用教程</h1>
-    
-    <div class="cube-article-header">
-        <div class="cube-article-date">
-            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-            <!-- moment.js对象 -->
-            2017-10-07
-        </div>
-        <div class="cube-article-tags">
-    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-    
-    <a href="/tags/教程/">#教程</a>
-    
-</div>
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      Hexo博客 新手安装及使用教程
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2017-10-07
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
     </div>
+  
+
+          
+      </header>
     
-    <div class="cube-article-content cube-markdown">
-        
-        <p>这是一篇基于Github搭建Hexo博客的基础教程，内容有：资源下载、安装步骤、发布更新文章、更换主题</p>
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>这是一篇基于Github搭建Hexo博客的基础教程，内容有：资源下载、安装步骤、发布更新文章、更换主题</p>
 <h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><h3 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h3><ul>
 <li>node.js ，<a href="https://nodejs.org/en/" target="_blank" rel="external">官网下载地址</a>,下载完成，双击打开，选择下一步安装即可。注：尽量下载最新版本，避免报错。</li>
 </ul>
@@ -267,238 +228,241 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ git clone https://github.com/shuiRong/hexo-theme-Ada.git themes/Ada</div><div class="line">// 将MyselfBlog目录下_config.yml里theme的名称landscape修改为Ada</div><div class="line"></div><div class="line">$ hexo clean         //清除缓存文件 (db.json) 和静态文件 (public)</div><div class="line">$ hexo g             //生成缓存和静态文件</div><div class="line">$ hexo d             //重新部署到服务器</div></pre></td></tr></table></figure>
 <p>每个主题都有内容使用和修改的介绍，可以替换，名字、标题、图片、网址等。</p>
 
-    </div>
-</div>
-
-<div class="cube-article-nav">
-    <ul>
-        
-        
-        <li class="next">
-            <a href="/2017/10/07/hello-world/">
-                Hello World
-                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2017年10月08日 10:11</p>
+        <p>原始链接： <a class="post-url" href="/2017/10/07/Hexo博客/" title="Hexo博客 新手安装及使用教程">http://SunShiLong.github.io/2017/10/07/Hexo博客/</a></p>
+        <footer>
+            <a href="http://SunShiLong.github.io">
+                <img src="/images/logo.png" alt="孙世龙">
+                孙世龙
             </a>
-        </li>
+        </footer>
+    </div>
+</div>
+
+      
+    </div>
+    <footer class="article-footer">
         
-    </ul>
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://SunShiLong.github.io/2017/10/07/Hexo博客/&title=《Hexo博客 新手安装及使用教程》 — 学不车&pic=http://SunShiLong.github.ioimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://SunShiLong.github.io/2017/10/07/Hexo博客/&title=《Hexo博客 新手安装及使用教程》 — 学不车&source=孙世龙在 Github 上的个人博客" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://SunShiLong.github.io/2017/10/07/Hexo博客/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo博客 新手安装及使用教程》 — 学不车&url=http://SunShiLong.github.io/2017/10/07/Hexo博客/&via=http://SunShiLong.github.io" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://SunShiLong.github.io/2017/10/07/Hexo博客/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3ay24iMRAFUP7/p8l2pEDn3nIzEvbxCoWO8elFqR5+POL1/Get/P3dM7/X4xMLAwPjaxnJds9gvdv53Q7XZ6ipGBgYBzCSQ7x7vj3u7PMfZ8bAwMAIkr/rfRIYBgYGxr0Bdwa7TgExMDAwrhlJEZt3utoAev0ibq7FMTAwvpCRd93//+ePzDcwMDC+ivEsV75DEkBnZ3jxWxgYGFsz8gC3UrgmT7YBFwMD4xxGXnbmgTL5NodFJSsGBsYBjPYKRT7UzAcMS8MJDAyMwxhtWz9P9VaK5LoXiIGBsRFjpVmfXKTIk8Ic8Pa/MDAwNmXkTf9Z/ZiXwe2TGBgY5zDypHB2jaw9Vnv968V8AwMDYzvGeott1qrL08HoRWBgYGzNaFPA2WhzBqsTVgwMjE0ZbWE5Sxln/fw8oGNgYOzNmBWxsxFj3tprx6IYGBjnMJJN2+Hl7BW0+2BgYOzNmF35ypv7ySChvZDx4lQYGBhbM5JWfpu0zUizVxMFXwwMjC0YhTV4fnaNbDYEjXqHGBgYmzJmY8u2xdamgHXAxcDAOIbRFrR38eoRKQYGxqaMZ7nan5lh2n0wMDD2ZtwVs/OR5+xSRV7WYmBg7MqYjQFWit67Ai4GBsZpjPa21bBiXrhG9serwcDAwLgOdsvDy7b0feRfYGBgYASjglkgbstgDAyMExhtQ6399hOxEQMD4xxGXjq2SV7ybZsCLg01MTAwvo/xA8QU0T9A3UmeAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
+<div class="mask"></div>
 
-<!-- TODO 根据theme.comment的内容进行入口选择 -->
-
-
-
-        </div>
-        <div class="cube-right">
+        
+        <ul class="article-footer-menu">
             
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/教程/" class="color3">教程</a>
+      
+  </li>
 
-<div class="cube-search cube-sidebar" id="cube-search">
-    <div class="search-container">
-        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
-        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
-    </div>
-    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
-</div>
-<script>
-    (function (window) {
-        'use strict';
-        window.searchModule = {}
-        window.searchModule.JSONUrl = '/content.json'
-        window.searchModule.rootUrl = '/'
-    })(window)
-</script>
-<div class="cube-search-form">
-    <div class="cube-search-control">
-        <input type="text" placeholder="Search" class="search-input">
-        <a class="close-button">
-            <i class="cube-icon cube-close" aria-hidden="true"></i>
-        </a>
-    </div>
-    <div class="cube-search-result"></div>
-</div>
+        </ul>
+        
+    </footer>
+  </div>
+</article>
 
 
-<div class="cube-author cube-sidebar" id="cube-author">
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#资源下载"><span class="post-toc-text">资源下载</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#node-js"><span class="post-toc-text">node.js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Git"><span class="post-toc-text">Git</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装步骤"><span class="post-toc-text">安装步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更换npm源"><span class="post-toc-text">更换npm源</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#淘宝npm"><span class="post-toc-text">淘宝npm</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#cnpmjs"><span class="post-toc-text">cnpmjs</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置npm"><span class="post-toc-text">配置npm</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Hexo"><span class="post-toc-text">安装Hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关联Git"><span class="post-toc-text">关联Git</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#打开网页地址"><span class="post-toc-text">打开网页地址</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#发布文章"><span class="post-toc-text">发布文章</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更换主题"><span class="post-toc-text">更换主题</span></a></li></ol>
+        </nav>
+    </aside>
     
+
+<nav id="article-nav">
+  
+  
+    <a href="/2017/10/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">Hello World</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
     
-    <span>孙世龙</span>
-    
-    
-    <a title="孙世龙在 Github 上的个人博客">孙世龙在 Github 上的个人博客</a>
-    
-    <div class="count">
-        <a class="count articles"><span>2</span>Article</a>
-        <a class="count tags"><span>2</span>Tags</a>
-        <a class="count categories"><span>0</span>Categories</a>
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2017 孙世龙<br>
+      </p>
     </div>
-</div>
-
-
-
-<div class="cube-music cube-sidebar" id="cube-music">
-    <div class="cube-player aplayer" id="cube-player"></div>
-</div>
-<script>
-    (function (window) {
-        window.musicModule = {}
-        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
-        window.musicModule.lrcConfig = {
-            open: 'Open Lyrics',
-            close: 'Close Lyrics'
-        }
-    })(window)
-</script>
-
-
-
-<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
-    <div class="title">
-        <a>Recent Posts</a>
-    </div>
-    <ul class="list">
-        
-        
-        <li>
-            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
-            
-            <div class="normal">
-                <p class="index first">
-                    <span>1</span>
-                </p>
-                <p class="title">
-                    <a href="/2017/10/07/Hexo博客/" title="Hexo博客 新手安装及使用教程">Hexo博客 新手安装及使用教程</a>
-                </p>
-            </div>
-            
-        </li>
-        
-        
-        
-        <li>
-            <div class="normal">
-                <p class="index">
-                    <span>2</span>
-                </p>
-                <p class="title">
-                    <a href="/2017/10/07/hello-world/" title="Hello World">Hello World</a>
-                </p>
-            </div>
-        </li>
-        
-        
-    </ul>
-</div>
-
-
-
-
-
-<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
-    <div class="title">
-        <a href="/tags">Tagcloud</a>
-    </div>
-    <div class="cube-boxs">
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/教程/">#教程</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/文档/">#文档</a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="cube-links cube-sidebar" id="cube-links">
-    <div class="title">
-        <a>Links</a>
-    </div>
-    <ul class="list">
-        
-        <li>
-            
-            
-            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
-            
-            <a href="https://github.com/ZEROKISEKI" target="_blank">GitHub</a>
-        </li>
-        
-        <li>
-            
-            
-            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/Coding.png">
-            
-            <a href="https://coding.net/u/SORA1" target="_blank">Coding</a>
-        </li>
-        
-        <li>
-            
-            
-            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/SF.png">
-            
-            <a href="https://segmentfault.com/u/aonosora" target="_blank">SF社区</a>
-        </li>
-        
-        <li>
-            
-            
-            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/开发者头条.png">
-            
-            <a href="https://toutiao.io/u/148070" target="_blank">开发者头条</a>
-        </li>
-        
-    </ul>
-</div>
-
-
-
-<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
-    <div class="title">
-        <a>Friend Links</a>
-    </div>
-    <ul class="list">
-        
-        <li>
-            <!-- TODO change avatar.png to friend.png-->
-            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/micblo.png">
-            <a href="https://blog.micblo.com/" target="_blank">罗大佬</a>
-        </li>
-        
-        <li>
-            <!-- TODO change avatar.png to friend.png-->
-            <img src="http://cube-1252774894.cosgz.myqcloud.com/friend_links/DIYgod.jpg">
-            <a href="https://www.anotherhome.net/" target="_blank">DIYgod</a>
-        </li>
-        
-        <li>
-            <!-- TODO change avatar.png to friend.png-->
-            <img src="/images/friend_links.jpg ">
-            <a href="https://aonosora.com/" target="_blank">咪西西の部落格</a>
-        </li>
-        
-    </ul>
-</div>
-
-
-        </div>
-    </div>
-</div>
-<footer class="cube-footer">
-    
-© 2017 孙世龙
-
-<br>
-Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+  </div>
 </footer>
-<!-- inject:script -->
-<script src="/js/script.js"></script>
-<!-- endinject -->
-<div class="cube-loading out"></div>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://SunShiLong.github.io",
+      animate: true,
+      isHome: false,
+      share: true
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/文档/" style="font-size: 10px;">文档</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+  </div>
 </body>
 </html>
