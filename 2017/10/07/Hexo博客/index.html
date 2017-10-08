@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/hexoHome.png">
 <meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/gitBranch.png">
 <meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/macdown.png">
-<meta property="og:updated_time" content="2017-10-08T02:08:15.000Z">
+<meta property="og:updated_time" content="2017-10-08T02:11:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客 新手安装及使用教程">
 <meta name="twitter:description" content="这是一篇基于Github搭建Hexo博客的基础教程，内容有：资源下载、安装步骤、发布更新文章、更换主题 资源下载node.js node.js ，官网下载地址,下载完成，双击打开，选择下一步安装即可。注：尽量下载最新版本，避免报错。  Git Xcode自带Git  安装步骤更换npm源Node Package Manager 是node.js的模块依赖管理工具，由于国内有墙，使用时多有不便，国内">
@@ -265,7 +265,7 @@
 <li>生成静态页面，执行：</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ hexo generate        或者：hexo g</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 此时若出现如下报错：</div><div class="line">ERROR Local hexo not found in ~/blog</div><div class="line">ERROR Try runing: &apos;npm install hexo --save&apos;</div><div class="line"></div><div class="line">// 则执行命令：</div><div class="line">npm install hexo --save</div><div class="line">// 若无报错，自行忽略此步骤。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 此时若出现如下报错：</div><div class="line">ERROR Local hexo not found in ~/blog</div><div class="line">ERROR Try runing: &apos;npm install hexo --save&apos;</div><div class="line"></div><div class="line">// 则执行命令：</div><div class="line">$ npm install hexo --save</div><div class="line">// 若无报错，自行忽略此步骤。</div></pre></td></tr></table></figure>
 <ul>
 <li>配置页面，执行：</li>
 </ul>
@@ -280,7 +280,7 @@
 <h2 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h2><ul>
 <li>cd 到‘MyselfBlog’目录，新建文章，执行</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hexo new &quot;NewBlog&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ hexo new &quot;NewBlog&quot;</div></pre></td></tr></table></figure>
 <ul>
 <li>可以看到新建一个名为“NewBlog.md”的文件目录在MyselfBlog/source/_posts下，这里推荐使用markdown编辑博客，Mac端好用的编辑器有Mou和MacDown，但是Mou目前最高支持MacOS10.11，我的电脑系统是10.12，所有只好用MacDown。当然喜欢Vim的不受影响啦。</li>
 </ul>
@@ -294,11 +294,11 @@
 <ul>
 <li>文章编辑完成，接下来就可以发布了，还是执行下面两句：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">hexo generate          //生成静态页面</div><div class="line"></div><div class="line">hexo deploy            //部署到Github</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ hexo generate          //生成静态页面</div><div class="line"></div><div class="line">$ hexo deploy            //部署到Github</div></pre></td></tr></table></figure>
 <p><strong>NOW, Hexo博客搭建教程就告一段落了</strong></p>
 <h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>所有基于github建立的hexo博客，默认主题都是landscape，可以自定义的，到<a href="https://hexo.io/themes/" target="_blank" rel="external">主题官网</a>选好自己喜欢的主题，例如主题Ada</p>
 <p>cd 到‘MyselfBlog‘目录，执行：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git clone https://github.com/shuiRong/hexo-theme-Ada.git themes/Ada</div><div class="line">// 将MyselfBlog目录下_config.yml里theme的名称landscape修改为Ada</div><div class="line"></div><div class="line">$ hexo clean         //清除缓存文件 (db.json) 和静态文件 (public)</div><div class="line">$ hexo g             //生成缓存和静态文件</div><div class="line">$ hexo d             //重新部署到服务器</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">$ git clone https://github.com/shuiRong/hexo-theme-Ada.git themes/Ada</div><div class="line">// 将MyselfBlog目录下_config.yml里theme的名称landscape修改为Ada</div><div class="line"></div><div class="line">$ hexo clean         //清除缓存文件 (db.json) 和静态文件 (public)</div><div class="line">$ hexo g             //生成缓存和静态文件</div><div class="line">$ hexo d             //重新部署到服务器</div></pre></td></tr></table></figure>
 <p>每个主题都有内容使用和修改的介绍，可以替换，名字、标题、图片、网址等。</p>
 
         </div>
@@ -307,7 +307,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-10-08T02:08:15.000Z" itemprop="dateUpdated">2017-10-08 10:08:15</time>
+    Last updated: <time datetime="2017-10-08T02:11:51.000Z" itemprop="dateUpdated">2017-10-08 10:11:51</time>
 </span><br>
 
 
