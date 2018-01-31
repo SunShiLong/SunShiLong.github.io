@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://SunShiLong.github.io/"/>
-  <updated>2018-01-31T05:47:17.000Z</updated>
+  <updated>2018-01-31T06:05:03.000Z</updated>
   <id>http://SunShiLong.github.io/</id>
   
   <author>
@@ -21,17 +21,16 @@
     <link href="http://SunShiLong.github.io/2018/01/31/xUnique%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91/"/>
     <id>http://SunShiLong.github.io/2018/01/31/xUnique合作开发/</id>
     <published>2018-01-31T05:44:36.000Z</published>
-    <updated>2018-01-31T05:47:17.000Z</updated>
+    <updated>2018-01-31T06:05:03.000Z</updated>
     
-    <content type="html"><![CDATA[<p><strong><em>xUnique解决xCode开发冲突</em></strong></p><p>在iOS合作开发过程中，经常会遇到各种问题，其中在提交代码过程中，总是会发生冲突，提交失败。xUnique可以一劳永逸的解决此类问题，提高开发效率。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ol><li>下载地址<a href="https://github.com/truebit/xUnique.git" target="_blank" rel="external">https://github.com/truebit/xUnique.git</a></li><li><p>开始安装，如果安装失败，先卸载老版本，老版本的文件夹路径是</p><pre><code>/usr/local/bin/xunique</code></pre><p>找到后，进入xUnique源码所在文件夹，例如：</p><pre><code>~xUnique-master</code></pre><p>安装最新版（现在应该是4.1.4），在终端执行</p><pre><code>sudo python setup.py install</code></pre></li><li><p>将xUnique和git绑定，进入项目所在文件夹（一般是.xcodeproj所在），在终端执行：</p><pre><code>{ echo &apos;#!/bin/sh&apos;; echo &apos;xunique XXX&apos;; } &gt; .git/hooks/pre-commit</code></pre><p>其中，将XXX换成项目路径，例如</p><pre><code>/Users/ushitekimini/Desktop/chongtu/testPro/testPro.xcodeproj</code></pre><p>运行终端没有问题，就可以了</p></li><li><p>设置可执行权限，在终端执行：</p><pre><code>chmod 755 .git/hooks/pre-commit</code></pre><p>至此，xUnique安装完毕！</p></li></ol><p>#使用</p><p>###commit两次<br>为了避免提交过程中出现问题，一般commit两次 。第一次commit后看到下图，再commit一次。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oxftt42c0.bkt.clouddn.com/WechatIMG1082.jpeg" alt="第一次commit''" title="">                </div>                <div class="image-caption">第一次commit''</div>            </figure>]]></content>
+    <content type="html"><![CDATA[<p>title: xUnique解决Xcode开发冲突<br>date: 2018-1-31<br>tags: 教程<br><strong><em>xUnique解决Xcode开发冲突</em></strong></p><p>在iOS合作开发过程中，经常会遇到各种问题，其中在提交代码过程中，总是会发生冲突，提交失败。xUnique可以一劳永逸的解决此类问题，提高开发效率。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ol><li>下载地址<a href="https://github.com/truebit/xUnique.git" target="_blank" rel="external">https://github.com/truebit/xUnique.git</a></li><li><p>开始安装，如果安装失败，先卸载老版本，老版本的文件夹路径是</p><pre><code>/usr/local/bin/xunique</code></pre><p>找到后，进入xUnique源码所在文件夹，例如：</p><pre><code>~xUnique-master</code></pre><p>安装最新版（现在应该是4.1.4），在终端执行</p><pre><code>sudo python setup.py install</code></pre></li><li><p>将xUnique和git绑定，进入项目所在文件夹（一般是.xcodeproj所在），在终端执行：</p><pre><code>{ echo &apos;#!/bin/sh&apos;; echo &apos;xunique XXX&apos;; } &gt; .git/hooks/pre-commit</code></pre><p>其中，将XXX换成项目路径，例如</p><pre><code>/Users/ushitekimini/Desktop/chongtu/testPro/testPro.xcodeproj</code></pre><p>运行终端没有问题，就可以了</p></li><li><p>设置可执行权限，在终端执行：</p><pre><code>chmod 755 .git/hooks/pre-commit</code></pre><p>至此，xUnique安装完毕！</p></li></ol><p>#使用</p><p>###commit两次<br>为了避免提交过程中出现问题，一般commit两次 。第一次commit后看到下图，再commit一次。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oxftt42c0.bkt.clouddn.com/WechatIMG1082.jpeg" alt="第一次commit''" title="">                </div>                <div class="image-caption">第一次commit''</div>            </figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;strong&gt;&lt;em&gt;xUnique解决xCode开发冲突&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在iOS合作开发过程中，经常会遇到各种问题，其中在提交代码过程中，总是会发生冲突，提交失败。xUnique可以一劳永逸的解决此类问题，提高开发效率。&lt;/p&gt;
-&lt;h1 id
+        &lt;p&gt;title: xUnique解决Xcode开发冲突&lt;br&gt;date: 2018-1-31&lt;br&gt;tags: 教程&lt;br&gt;&lt;strong&gt;&lt;em&gt;xUnique解决Xcode开发冲突&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在iOS合作开发过程中，经常会遇到各种问题，其中在
       
     
     </summary>
