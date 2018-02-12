@@ -163,6 +163,56 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-Runtime详解（孙世龙）"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-02-12 00:00:00" datetime="2018-02-11T16:00:00.000Z"  itemprop="datePublished">2018-02-12</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/02/12/Runtime详解（孙世龙）/">Runtime机制</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        预热几个知识点一、所有都是对象，方法都是消息
+1、OC中所有id类型都被设计成对象，类本身也是一个对象。OC代码在运行时会动态转化为C代码。
+2、所有方法调用都是发消息，例如[self init];被转化为objc_msgSend(self,@selector(init))
+
+在OC中id指针，可以代表所有对象，其实id是结构体，我们看看id的具体结构：
+struct objc_class ...
+    
+
+        <a href="/2018/02/12/Runtime详解（孙世龙）/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-xUnique合作开发"
   class="article-card article-type-post" itemprop="blogPost">
 
