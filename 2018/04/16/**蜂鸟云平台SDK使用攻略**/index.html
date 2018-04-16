@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>蜂鸟云平台SDK使用攻略 | 学不车 | 一天不学问题多，两天不学走下坡。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="教程">
+    <meta name="description" content="蜂鸟云平台SDK使用攻略 目录   平台简介 前期准备 接入SDK 功能介绍 Demo展示  平台简介蜂鸟地图可以提供三维室内地图体验，可以定制或绘制各种样式的三维地图。 Fengmap SDK是一套跨平台的地图引擎，只需要使用蜂鸟三维室内地图和SDK，便可快捷的开发Android、iOS、Web端地图应用，集成在APP、公众号或网站中。 Fengmap SDK 广泛支持多种室内定位技术，可快速完">
+<meta name="keywords" content="教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蜂鸟云平台SDK使用攻略">
+<meta property="og:url" content="http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/index.html">
+<meta property="og:site_name" content="学不车">
+<meta property="og:description" content="蜂鸟云平台SDK使用攻略 目录   平台简介 前期准备 接入SDK 功能介绍 Demo展示  平台简介蜂鸟地图可以提供三维室内地图体验，可以定制或绘制各种样式的三维地图。 Fengmap SDK是一套跨平台的地图引擎，只需要使用蜂鸟三维室内地图和SDK，便可快捷的开发Android、iOS、Web端地图应用，集成在APP、公众号或网站中。 Fengmap SDK 广泛支持多种室内定位技术，可快速完">
+<meta property="og:updated_time" content="2018-04-16T00:32:24.813Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="蜂鸟云平台SDK使用攻略">
+<meta name="twitter:description" content="蜂鸟云平台SDK使用攻略 目录   平台简介 前期准备 接入SDK 功能介绍 Demo展示  平台简介蜂鸟地图可以提供三维室内地图体验，可以定制或绘制各种样式的三维地图。 Fengmap SDK是一套跨平台的地图引擎，只需要使用蜂鸟三维室内地图和SDK，便可快捷的开发Android、iOS、Web端地图应用，集成在APP、公众号或网站中。 Fengmap SDK 广泛支持多种室内定位技术，可快速完">
+    
+        <link rel="alternate" type="application/atom+xml" title="学不车" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">孙世龙</h5>
+          <a href="mailto:1577908011@qq.com" title="1577908011@qq.com" class="mail">1577908011@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/longgeshashen" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/龙哥杀神" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/longgeshashen"  >
+                <i class="icon icon-lg icon-link"></i>
+                推荐
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">蜂鸟云平台SDK使用攻略</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">蜂鸟云平台SDK使用攻略</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-16T00:32:00.000Z" itemprop="datePublished" class="page-time">
+  2018-04-16
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#蜂鸟云平台SDK使用攻略"><span class="post-toc-number">1.</span> <span class="post-toc-text">蜂鸟云平台SDK使用攻略</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#平台简介"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">平台简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前期准备"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">前期准备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#接入SDK"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">接入SDK</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#功能介绍"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">功能介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、地图创建"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">一、地图创建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、地图显示"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">二、地图显示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三、地图交互"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">三、地图交互</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、地图绘制"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">四、地图绘制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#五、查询地图数据"><span class="post-toc-number">1.4.5.</span> <span class="post-toc-text">五、查询地图数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#六、路径规划与导航"><span class="post-toc-number">1.4.6.</span> <span class="post-toc-text">六、路径规划与导航</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-**蜂鸟云平台SDK使用攻略**"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">蜂鸟云平台SDK使用攻略</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-16 08:32:00" datetime="2018-04-16T00:32:00.000Z"  itemprop="datePublished">2018-04-16</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="蜂鸟云平台SDK使用攻略"><a href="#蜂鸟云平台SDK使用攻略" class="headerlink" title="蜂鸟云平台SDK使用攻略"></a><strong>蜂鸟云平台SDK使用攻略</strong></h1><blockquote>
+<p>目录</p>
+</blockquote>
+<ul>
+<li>平台简介</li>
+<li>前期准备</li>
+<li>接入SDK</li>
+<li>功能介绍</li>
+<li>Demo展示</li>
+</ul>
+<h2 id="平台简介"><a href="#平台简介" class="headerlink" title="平台简介"></a>平台简介</h2><p>蜂鸟地图可以提供三维室内地图体验，可以定制或绘制各种样式的三维地图。</p>
+<p>Fengmap SDK是一套跨平台的地图引擎，只需要使用蜂鸟三维室内地图和SDK，便可快捷的开发Android、iOS、Web端地图应用，集成在APP、公众号或网站中。</p>
+<p>Fengmap SDK 广泛支持多种室内定位技术，可快速完成室内定位对接、功能开发以及项目实施。</p>
+<p>蜂鸟云地图编辑器是国内首创的SaaS室内地图全要素编辑器，面向企业机构和个人用户提供在线室内地图制作与编辑服务。编辑器具备专业的室内地图制图能力，可以简单、快速的进行地图空间元素、公共设施、路径数据的绘制和修改，并对地图主题样式、属性数据、图标资源进行选择编辑和管理。</p>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>Fengmap iOS SDK 可以实现<code>地图显示与操作</code>、<code>覆盖物</code>、<code>查询分析</code>和<code>路径导航</code>4部分功能。前期准备需要以下几点：</p>
+<ol>
+<li>开发工具、：Xcode7.0以上</li>
+<li>SDK：V2.0.0以上，老版本已不兼容</li>
+<li>注册为蜂鸟用户</li>
+<li>注册App秘钥（当前用户可以免费创建不超过50个App）</li>
+<li>下载SDK包<a href="https://www.fengmap.com/develop-ios-download.html" target="_blank" rel="external">最新版本</a></li>
+<li>设备联网，蜂鸟SDK密钥需要在应用首次运行时连接网络</li>
+<li>加载地图会默认设置一套Fengmap自定义主题，该主题文件不可以删除，否则会导致程序崩溃</li>
+<li>若需要替换定位、指北针的图标请保留原文件名称，否则不显示替换的新图片</li>
+<li><strong>根据需求，上传资料，蜂鸟平台会帮助制作地图XXX.fmap。下载即可使用</strong></li>
+<li>上传资料样例：<a href="https://www.fengmap.com/help-faq-detail.html?id=5-23" target="_blank" rel="external">模板</a></li>
+</ol>
+<h2 id="接入SDK"><a href="#接入SDK" class="headerlink" title="接入SDK"></a>接入SDK</h2><ol>
+<li>将SDK的libs文件夹拷贝到您的Application工程根目录下</li>
+<li>Other Linker Flags中添加-ObjC</li>
+<li>设置静态库的链接路径，Library Search Paths中添加您的静态库目录，比如<code>$(SRCROOT)/../libs/Release-$( PLATFORM_NAME)</code>，<code>$(SRCROOT)</code>宏代表您的工程文件目录,<code>$( PLATFORM_NAME)</code>宏代表当前配置是iOS Device还是Simulator。</li>
+<li>静态库中采用Objective-C和C++混合实现，因此需要您保证您工程中至少有一个.mm后缀的源文件</li>
+<li>添加系统库：CoreGraphics.framework、OpenGLES.framework、GLKit.framework、Security.framework</li>
+<li>将TARGETS-Build Settings-C++ Language Dialect项选择为：GNU++11[-std=gnu++11]<br>TARGETS-Build Settings-C++ Standard Library一项改为： Libstdc++(GNU C++ standard library)</li>
+<li>引入FMBundle.bundle资源文件（存储了公共设施、定位、指北针等资源图片，还存储了地图的默认主题文件）</li>
+</ol>
+<h2 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h2><h3 id="一、地图创建"><a href="#一、地图创建" class="headerlink" title="一、地图创建"></a>一、地图创建</h3><blockquote>
+<p>添加秘钥</p>
+</blockquote>
+<pre><code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+// Override point for customization after application launch.
+
+NSLog(@&quot;请输入您在蜂鸟云平台申请的key&quot;);
+
+// appKey从官网控制台获取
+[[FMKMapSDK shareSDK] setKey:@&quot;65f0abda4ca87adc4f3283b333fd11c7&quot;];
+return YES;
+}
+</code></pre><p>在蜂鸟网站，通过地图ID下载地图数据，地图数据是.fmap格式的文件在200k左右。</p>
+<h3 id="二、地图显示"><a href="#二、地图显示" class="headerlink" title="二、地图显示"></a>二、地图显示</h3><pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    // 通过地图ID初始化地图视图
+    self.mapView = [[FMKMapView alloc] initWithFrame:rect ID:_mapID delegate:self autoUpgrade:NO];
+    [self.view addSubview:_mapView];
+}
+</code></pre><blockquote>
+<p>地图显示包含以下功能点：</p>
+</blockquote>
+<ol>
+<li>楼层：一层或多层，显示多层时焦点层不透明，其他楼层透明</li>
+<li>缩放：缩放范围1~29，可以设置默认缩放级别，及缩放范围</li>
+<li>倾斜：地图初始化后可以设置地图的倾斜角度</li>
+<li>旋转：地图初始化后可以设置地图的旋转角度</li>
+<li>二三维：Fengmap地图有二维、三维两种显示模式</li>
+<li>坐标转换：SDK 提供设备屏幕坐标和地图坐标之间的转换方法，转换方法在FMKMapView内</li>
+<li>设置主题：可以到网站下载，可以设置离线主题</li>
+<li>离线地图：下载地图资源离线操作</li>
+</ol>
+<h3 id="三、地图交互"><a href="#三、地图交互" class="headerlink" title="三、地图交互"></a>三、地图交互</h3><blockquote>
+<p>地图控制：</p>
+</blockquote>
+<ol>
+<li>设置中心点</li>
+<li>地图移动</li>
+<li>地图缩放</li>
+<li>地图倾斜</li>
+<li>地图旋转</li>
+<li>手势控制（旋转、缩放、拖拽、点击、双击、长按、轻扫）</li>
+<li>自定义手势</li>
+<li>动画控制</li>
+</ol>
+<blockquote>
+<p>地图控件</p>
+</blockquote>
+<ol>
+<li>指北针</li>
+<li>缩放控件</li>
+<li>楼层切换控件</li>
+<li>多楼层显示控件</li>
+<li>二三维切换控件</li>
+</ol>
+<blockquote>
+<p>事件方法</p>
+</blockquote>
+<ol>
+<li>地图事件包括</li>
+<li>地图加载事件，</li>
+<li>地图更新事件，</li>
+<li>地图单击、双击、长按、移动事件。</li>
+</ol>
+<p>可以通过实现FMKMapViewDelegate 协议的方法对事件进行其他操作。</p>
+<blockquote>
+<p>图层节点点击事件</p>
+</blockquote>
+<p>可以通过图层节点点击事件拾取到地图上的节点元素。图层节点的点击事件需要设置图层对象的代理，然后实现 FMKLayerDelegate (层节点协议) 的方法。<br>地图元素拾取事件按照 model、facility、imageMarker、locationMarker、textMarker 的顺序拾取，任何一个图层响应拾取事件，都会阻拦拾取事件的向下传递。</p>
+<h3 id="四、地图绘制"><a href="#四、地图绘制" class="headerlink" title="四、地图绘制"></a>四、地图绘制</h3><blockquote>
+<p>点标准</p>
+</blockquote>
+<ol>
+<li>图片标注：在指定坐标点位置添加自定义的图片标识</li>
+<li>文字标注：在指定坐标点添加自定义文字内容</li>
+<li>定位点标注：在指定坐标点位置添加的用于导航过程中展示位置的标识</li>
+<li>气泡窗标注：气泡窗口为用户自定义View，可根据用户需求在地图上添加相应的视图。气泡窗口支持动态更新位置。</li>
+</ol>
+<blockquote>
+<p> 绘制形状</p>
+</blockquote>
+<ol>
+<li>线：用户可根据坐标点集绘制折线。注：线是针对整个地图的，线段的点可以是不同楼层的点</li>
+<li>多边形：Fengmap iOS SDK 支持绘制多边形操作。用户可根据坐标点集绘制多边形，注：多边形是针对楼层的，每一楼层可包含多个多边形</li>
+<li>矩形：Fengmap iOS SDK 支持绘制矩形操作。用户可根据中心点坐标和宽高绘制矩形，注：矩形是针对楼层的，每一楼层可包含多个矩形</li>
+<li>圆形：Fengmap iOS SDK 支持绘制圆形操作。用户可根据中心点坐标和半径绘制圆形，注：圆形是针对楼层的，每一楼层可包含多个圆形</li>
+</ol>
+<h3 id="五、查询地图数据"><a href="#五、查询地图数据" class="headerlink" title="五、查询地图数据"></a>五、查询地图数据</h3><blockquote>
+<p>信息查询</p>
+</blockquote>
+<p>Fengmap iOS SDK提供对数据模型（model）、公共设施(facility)的查询接口, 可以根据关键字或者类型查询模型和公共设施<br>FID查询<br>Type查询<br>关键字查询</p>
+<blockquote>
+<p>周边检索</p>
+</blockquote>
+<p>开发者可设置查询中心点和半径，对该圆形区域进行查询搜索。</p>
+<blockquote>
+<p>自有数据检索</p>
+</blockquote>
+<p>Fengmap iOS SDK支持对数据模型（model）、公共设施(facility)、自定义标注(marker)等地图元素的搜索分析。自有数据的查询是您的业务数据。可通过地图数据内的某个字段与自有数据相关联，分两步查询：第一步先查询外部数据获取到所关联的地图数据字段；第二步根据地图数据字段进行地图查询。<br>注：本示例以*.fmap数据中的FID字段与自有数据中的FID关联为例，实际中也可通过其他字段关联与地图中的FID字段关联。地图中的FID字段为全地图唯一标识。</p>
+<h3 id="六、路径规划与导航"><a href="#六、路径规划与导航" class="headerlink" title="六、路径规划与导航"></a>六、路径规划与导航</h3><blockquote>
+<p>路径规划</p>
+</blockquote>
+<ol>
+<li>Fengmap iOS SDK支持根据起点和终点坐标规划路线功能。 </li>
+<li>Fengmap iOS SDK 提供文字导航描述功能。在路径分析成功后，路径分析对象会自动生成相应的文字描述和路段信息。</li>
+</ol>
+<blockquote>
+<p>定位导航</p>
+</blockquote>
+<p>Fengmap iOS SDK 结合定位技术，可实现导航的功能。SDK提供导航工具类，使导航开发变得很简单，开发者可根据本示例结合实际定位系统，实现真实的定位导航功能。</p>
+<p>Demo下载地址<a href="https://www.fengmap.com/develop-ios-download.html" target="_blank" rel="external">7个子Demo最新版</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-04-16T00:32:24.813Z" itemprop="dateUpdated">2018-04-16 08:32:24</time>
+</span><br>
+
+
+        
+        临渊羡鱼，不如退而结网。
+        
+    </div>
+    <footer>
+        <a href="http://SunShiLong.github.io">
+            <img src="/img/avatar.jpg" alt="孙世龙">
+            孙世龙
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/&title=《蜂鸟云平台SDK使用攻略》 — 学不车&pic=http://SunShiLong.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/&title=《蜂鸟云平台SDK使用攻略》 — 学不车&source=一个渐渐完善的技术博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《蜂鸟云平台SDK使用攻略》 — 学不车&url=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/&via=http://SunShiLong.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/02/12/Runtime详解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Runtime机制</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>孙世龙 &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/&title=《蜂鸟云平台SDK使用攻略》 — 学不车&pic=http://SunShiLong.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/&title=《蜂鸟云平台SDK使用攻略》 — 学不车&source=一个渐渐完善的技术博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《蜂鸟云平台SDK使用攻略》 — 学不车&url=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/&via=http://SunShiLong.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://SunShiLong.github.io/2018/04/16/**蜂鸟云平台SDK使用攻略**/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aS24qUQwFQPa/aSJlFInQHH8uMKgeoQ55cfGk9uXYt1t83X+vv68fr8efPrtT/VuPr5cvPDw8vFbpedHX70zKui50Xg8eHh7ee3h5M7j+3evHetIk8mZzXTMeHh7eN/CS9+ctJC+6WgMeHh7et/Hyh/68teDh4eF9My95iOeNodpmkr91PGvBw8PDi3lbQ6l3vj4+38PDw8NrjZp6ywHPjsjX96vviarFw8PDO8DLo4TJgCo58uYH+nxshoeHh3eOl4ez1UAhX8nKY9leNIyHh4f3Tt5koapadN428haFh4eHd5rXe3A3h/qtAdhC4IuHh4c34OUH6F4oMF+oqkbDze8HeHh4eDFvazmgGh9Um0p1zPY0q8bDw8Mb83ol9gZR0Zh/vDv2z9IAHh4e3ipvPuiahBf56KuwYjXZSsDDw8OLefnDvfqg7y1jTSLjiIqHh4c35lWLyMPceQScH81ffG/Aw8PDW+L1dg3yhpHHuHkrSu7g4eHhneNdF1RtA/MWUqVG/wF4eHh4q7wkPsgLSlpI7/hebQl4eHh453g9wLz06p2tdoKHh4e3xes9dielTD7K5qIAHh4e3ipvtwFMVqaqMW7hnXh4eHhLvCqpWm4ScFSXDApxCR4eHt4BXg8zWQjIMdUaXqwO4OHh4S3x8gFY/rDuDbfyppIsOuDh4eG9h5eHBfPIYBJk5OEvHh4e3gne1hf+PIDoLRDMFx3w8PDwtnj34pXEB/NgIj+Uv2hFeHh4eAd4vcWs/MA9iYOTsLi3WICHh4c351VjiF6kmy9sVT/WaHUADw8P7wCvGjfkh+bqx5EzoqwFDw8P76O83jiq2mzyD6gw5cPDw8P7KK/3uxPSZMCGh4eHd463u261FdfmCw1P/wU8PDy8A7ytva38TnJYTzALSwN4eHh4Nd4PlOC7YCHM96IAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你要去哪里？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
