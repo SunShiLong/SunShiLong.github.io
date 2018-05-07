@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>No title | 学不车 | 一天不学问题多，两天不学走下坡。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="ActiveSQLite数据库操作说明前言 pod &amp;quot;ActiveSQLite&amp;quot; 优点：  自动建表 基于SQLite.swift数据库 不需要写Expression表达式 增删改查支持String和key-value字典操作 查询结果自动包装成对象 支持事务操作和异步操作 模型和数据库表映射 带有日志系统 数据库可以升级  一、特点1、支持的数据类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/index.html">
+<meta property="og:site_name" content="学不车">
+<meta property="og:description" content="ActiveSQLite数据库操作说明前言 pod &amp;quot;ActiveSQLite&amp;quot; 优点：  自动建表 基于SQLite.swift数据库 不需要写Expression表达式 增删改查支持String和key-value字典操作 查询结果自动包装成对象 支持事务操作和异步操作 模型和数据库表映射 带有日志系统 数据库可以升级  一、特点1、支持的数据类型">
+<meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/Swift_ActiveSQLite_surport_dataType.jpeg">
+<meta property="og:updated_time" content="2018-05-07T07:11:29.948Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="ActiveSQLite数据库操作说明前言 pod &amp;quot;ActiveSQLite&amp;quot; 优点：  自动建表 基于SQLite.swift数据库 不需要写Expression表达式 增删改查支持String和key-value字典操作 查询结果自动包装成对象 支持事务操作和异步操作 模型和数据库表映射 带有日志系统 数据库可以升级  一、特点1、支持的数据类型">
+<meta name="twitter:image" content="http://oxftt42c0.bkt.clouddn.com/Swift_ActiveSQLite_surport_dataType.jpeg">
+    
+        <link rel="alternate" type="application/atom+xml" title="学不车" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">孙世龙</h5>
+          <a href="mailto:1577908011@qq.com" title="1577908011@qq.com" class="mail">1577908011@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/longgeshashen" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/龙哥杀神" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/longgeshashen"  >
+                <i class="icon icon-lg icon-link"></i>
+                推荐
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">No title</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">No title</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-07T05:29:53.227Z" itemprop="datePublished" class="page-time">
+  2018-05-07
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ActiveSQLite数据库操作说明"><span class="post-toc-number">1.</span> <span class="post-toc-text">ActiveSQLite数据库操作说明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、特点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一、特点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、开始"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">二、开始</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、手动建数据库"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1、手动建数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1连接现有数据库"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">1.1连接现有数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、手动建表"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">2、手动建表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1、自动建表"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">2.1、自动建表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、连接数据库"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">3、连接数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、设置日志级别"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">4、设置日志级别</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、CURD（增改查删）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">三、CURD（增改查删）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1、保存一条数据"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">1.1、保存一条数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2、插入一条数据"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">1.2、插入一条数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-3、插入多条数据"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">1.3、插入多条数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1、查询第一条数据"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">2.1、查询第一条数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2、查询多条数据"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">2.2、查询多条数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3、通过Expression查询"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">2.3、通过Expression查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-4、链式查询"><span class="post-toc-number">1.3.7.</span> <span class="post-toc-text">2.4、链式查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1、通过属性值修改"><span class="post-toc-number">1.3.8.</span> <span class="post-toc-text">3.1、通过属性值修改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2、通过属性名字符串和属性值"><span class="post-toc-number">1.3.9.</span> <span class="post-toc-text">3.2、通过属性名字符串和属性值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-3、通过SQLite-swift的Setter"><span class="post-toc-number">1.3.10.</span> <span class="post-toc-text">3.3、通过SQLite.swift的Setter</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1、删除一条数据"><span class="post-toc-number">1.3.11.</span> <span class="post-toc-text">4.1、删除一条数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2、清空表"><span class="post-toc-number">1.3.12.</span> <span class="post-toc-text">4.2、清空表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3、链式删除"><span class="post-toc-number">1.3.13.</span> <span class="post-toc-text">4.3、链式删除</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、高级用法"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">四、高级用法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、表重命名、"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">1、表重命名、</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、添加新的属性"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">2、添加新的属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、删除表"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">3、删除表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、异步事务（重点来了…-）"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">4、异步事务（重点来了….）</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-ActiveSQLite数据库操作说明"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">No title</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-07 13:29:53" datetime="2018-05-07T05:29:53.227Z"  itemprop="datePublished">2018-05-07</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="ActiveSQLite数据库操作说明"><a href="#ActiveSQLite数据库操作说明" class="headerlink" title="ActiveSQLite数据库操作说明"></a>ActiveSQLite数据库操作说明</h1><p><code>前言</code></p>
+<pre><code>pod &quot;ActiveSQLite&quot;
+</code></pre><p><code>优点：</code></p>
+<ol>
+<li>自动建表</li>
+<li>基于SQLite.swift数据库</li>
+<li>不需要写Expression表达式</li>
+<li>增删改查支持String和key-value字典操作</li>
+<li>查询结果自动包装成对象</li>
+<li>支持事务操作和异步操作</li>
+<li>模型和数据库表映射</li>
+<li>带有日志系统</li>
+<li>数据库可以升级</li>
+</ol>
+<h2 id="一、特点"><a href="#一、特点" class="headerlink" title="一、特点"></a>一、特点</h2><p>1、支持的数据类型<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://oxftt42c0.bkt.clouddn.com/Swift_ActiveSQLite_surport_dataType.jpeg" alt="数据类型" title="">
+                </div>
+                <div class="image-caption">数据类型</div>
+            </figure></p>
+<p>NSNumber类型对应SQLite.swift的两种类型（Int64和Double)。NSNumber默认的映射类型是Int64。重写DBModel的doubleTypes()方法能标记属性为Double类型。</p>
+<pre><code>class T_BLE_DEVICE: DBModel {
+
+    var Major:NSNumber?
+    var Minor:NSNumber?
+
+    var RssiAnd: NSNumber?
+    var RssiIos: NSNumber?
+    var RssiDlj: NSNumber?
+    var AccIos : NSNumber?
+    var IsAdjusted:NSNumber?
+
+    //标记double类型
+    override func doubleTypes() -&gt; [String]{
+        return [&quot;AccIos&quot;]
+    }
+}
+</code></pre><h2 id="二、开始"><a href="#二、开始" class="headerlink" title="二、开始"></a>二、开始</h2><h3 id="1、手动建数据库"><a href="#1、手动建数据库" class="headerlink" title="1、手动建数据库"></a>1、手动建数据库</h3><pre><code>func createMyselfDB() {
+
+        let fileManager = FileManager.default
+
+        let myDirectory = NSHomeDirectory() + &quot;/Documents/DBFile/&quot;
+        let filePath = myDirectory.appending(&quot;aaa.db&quot;)
+        print(filePath)
+        let exsit = fileManager.fileExists(atPath: filePath)
+
+        if !exsit {
+            //创建数据库
+            try! fileManager.createDirectory(atPath: myDirectory, withIntermediateDirectories: true, attributes: nil)
+
+            let result = fileManager.createFile(atPath: filePath, contents: nil, attributes: nil)
+
+            print(result)
+        }
+}
+</code></pre><h3 id="1-1连接现有数据库"><a href="#1-1连接现有数据库" class="headerlink" title="1.1连接现有数据库"></a>1.1连接现有数据库</h3><pre><code>//连接现有数据库
+        let dbFile = Bundle.main.path(forResource: &quot;DataBase&quot;, ofType: &quot;db&quot;)
+        DBConfigration.setDefaultDB(path: dbFile!, name: &quot;DataBase.db&quot;)
+</code></pre><h3 id="2、手动建表"><a href="#2、手动建表" class="headerlink" title="2、手动建表"></a>2、手动建表</h3><pre><code>MARK: ---创建表（可以省略，数据库会自动创建表）
+        do {
+           try Person.createTable()
+        }
+        catch {
+
+        }
+</code></pre><h3 id="2-1、自动建表"><a href="#2-1、自动建表" class="headerlink" title="2.1、自动建表"></a>2.1、自动建表</h3><p>为了演示数据库操作建立两个模型Person.swift和T_BLE_DEVICE.swift</p>
+<pre><code>//model1
+import UIKit
+import ActiveSQLite
+
+class Person: DBModel {
+    var name:String!
+    var price:NSNumber!
+
+    var age: NSNumber!
+
+}
+
+
+//model2
+import UIKit
+import ActiveSQLite
+
+class T_BLE_DEVICE: DBModel {
+
+    var Major:NSNumber?
+    var Minor:NSNumber?
+
+    var RssiAnd: NSNumber?
+    var RssiIos: NSNumber?
+    var RssiDlj: NSNumber?
+    var AccIos : NSNumber?
+    var IsAdjusted:NSNumber?
+
+    //标记double类型
+    override func doubleTypes() -&gt; [String]{
+        return [&quot;AccIos&quot;]
+    }
+}
+</code></pre><blockquote>
+<p><strong>手动建表这步可省略，数据库会根据模型自动建表</strong></p>
+</blockquote>
+<h3 id="3、连接数据库"><a href="#3、连接数据库" class="headerlink" title="3、连接数据库"></a>3、连接数据库</h3><pre><code>//MARK: ----- 连接数据库
+        DBConfigration.setDefaultDB(path:filePath, name: &quot;aaa.db&quot;)
+</code></pre><h3 id="4、设置日志级别"><a href="#4、设置日志级别" class="headerlink" title="4、设置日志级别"></a>4、设置日志级别</h3><pre><code>//MARK: ----- 日志级别
+        /*
+         1、有四种日志级别，分别是: debug,info,warn,error。
+         2、默认的日志级别是info。
+         3、首先设置日志级别，后设置数据库路径
+         */
+        DBConfigration.logLevel = .warn
+</code></pre><h2 id="三、CURD（增改查删）"><a href="#三、CURD（增改查删）" class="headerlink" title="三、CURD（增改查删）"></a>三、CURD（增改查删）</h2><p>===================================== 增 ============================================</p>
+<h3 id="1-1、保存一条数据"><a href="#1-1、保存一条数据" class="headerlink" title="1.1、保存一条数据"></a>1.1、保存一条数据</h3><pre><code>//MARK: --- 1、保存数据
+                let per:Person = Person()
+                per.name = &quot;Alon&quot;
+                per.price = 13
+                per.age = 5
+                try! per.save()
+</code></pre><h3 id="1-2、插入一条数据"><a href="#1-2、插入一条数据" class="headerlink" title="1.2、插入一条数据"></a>1.2、插入一条数据</h3><pre><code>//MARK: --- 2、插入一条数据
+                let person1 = Person()
+                person1.name = &quot;Bolee&quot;
+                person1.price = 25
+                person1.age = 5
+                try! person1.insert()
+</code></pre><h3 id="1-3、插入多条数据"><a href="#1-3、插入多条数据" class="headerlink" title="1.3、插入多条数据"></a>1.3、插入多条数据</h3><pre><code>//MARK: --- 3、插入多条数据
+                var personArray = [Person]()
+                for i in 1...8 {
+                    let p = Person()
+                    p.name = &quot;student-\(i)&quot;
+                    p.price = 10 + i as NSNumber
+                    p.age = 5
+                    personArray.append(p)
+                }
+                try! Person.insertBatch(models: personArray)
+</code></pre><p>===================================== 查 ============================================</p>
+<h3 id="2-1、查询第一条数据"><a href="#2-1、查询第一条数据" class="headerlink" title="2.1、查询第一条数据"></a>2.1、查询第一条数据</h3><pre><code>let person = Person.findFirst(&quot;name&quot;, value: &quot;Bolee&quot;) as! Person
+print(person)
+</code></pre><h3 id="2-2、查询多条数据"><a href="#2-2、查询多条数据" class="headerlink" title="2.2、查询多条数据"></a>2.2、查询多条数据</h3><pre><code>let persons = Person.findAll([&quot;name&quot; : &quot;Bolee&quot;], [&quot;price&quot; : true]) as! [Person]
+print(persons.count)
+</code></pre><h3 id="2-3、通过Expression查询"><a href="#2-3、通过Expression查询" class="headerlink" title="2.3、通过Expression查询"></a>2.3、通过Expression查询</h3><pre><code>let id = Expression&lt;NSNumber&gt;(&quot;id&quot;)
+let name1 = Expression&lt;String&gt;(&quot;name&quot;)
+let price = Expression&lt;NSNumber&gt;(&quot;price&quot;)
+let array = Person.findAll(name1 == &quot;Bolee&quot;) as! Array&lt;Person&gt;
+print(array.count)
+
+let array1 = Person.findAll(id &lt; NSNumber(value: 10), orders: [Person.id.asc]) as! Array&lt;Person&gt;
+print(array1.count)
+</code></pre><h3 id="2-4、链式查询"><a href="#2-4、链式查询" class="headerlink" title="2.4、链式查询"></a>2.4、链式查询</h3><pre><code>let array3 = Person().where(Expression&lt;NSNumber&gt;(&quot;id&quot;) &gt; 3)
+    .order(Person.id)
+    .limit(20)
+    .run() as! [Person]
+
+print(array3.count)
+</code></pre><p>===================================== 改 ============================================</p>
+<h3 id="3-1、通过属性值修改"><a href="#3-1、通过属性值修改" class="headerlink" title="3.1、通过属性值修改"></a>3.1、通过属性值修改</h3><pre><code>person.name = &quot;Angle&quot;
+try! person.save()
+print(person)
+</code></pre><h3 id="3-2、通过属性名字符串和属性值"><a href="#3-2、通过属性名字符串和属性值" class="headerlink" title="3.2、通过属性名字符串和属性值"></a>3.2、通过属性名字符串和属性值</h3><pre><code>try! person.update(&quot;price&quot;, value: NSNumber(value: 100))       //单属性修改
+try! person.update([&quot;name&quot;: &quot;Dove&quot;,&quot;price&quot;:NSNumber(value: 200)]) //多属性修改
+
+try! Person.update([&quot;name&quot;: &quot;Maly&quot;,&quot;price&quot;:NSNumber(value: 300)], where: [&quot;id&quot;: NSNumber(value:1)]) //批量修改
+</code></pre><h3 id="3-3、通过SQLite-swift的Setter"><a href="#3-3、通过SQLite-swift的Setter" class="headerlink" title="3.3、通过SQLite.swift的Setter"></a>3.3、通过SQLite.swift的Setter</h3><pre><code>let price = Expression&lt;NSNumber&gt;(&quot;price&quot;)
+try! person?.update(price &lt;- NSNumber(value: 110))
+</code></pre><p>===================================== 删 ============================================</p>
+<h3 id="4-1、删除一条数据"><a href="#4-1、删除一条数据" class="headerlink" title="4.1、删除一条数据"></a>4.1、删除一条数据</h3><pre><code>try? person?.delete()
+</code></pre><h3 id="4-2、清空表"><a href="#4-2、清空表" class="headerlink" title="4.2、清空表"></a>4.2、清空表</h3><pre><code>try? Person.deleteAll()
+</code></pre><h3 id="4-3、链式删除"><a href="#4-3、链式删除" class="headerlink" title="4.3、链式删除"></a>4.3、链式删除</h3><pre><code>try? Person().where(Expression&lt;NSNumber&gt;(&quot;id&quot;) &gt; 20)
+            .runDelete()
+</code></pre><h2 id="四、高级用法"><a href="#四、高级用法" class="headerlink" title="四、高级用法"></a>四、高级用法</h2><h3 id="1、表重命名、"><a href="#1、表重命名、" class="headerlink" title="1、表重命名、"></a>1、表重命名、</h3><pre><code>try? Person.renameTable(oldName: &quot;Person&quot;, newName: &quot;Pepole&quot;)
+</code></pre><h3 id="2、添加新的属性"><a href="#2、添加新的属性" class="headerlink" title="2、添加新的属性"></a>2、添加新的属性</h3><ul>
+<li>1、先在模型类里添加属性</li>
+<li><p>2、调用addColumn</p>
+<pre><code>try? Person.addColumn([&quot;age&quot;])   //可添加多个属性
+</code></pre></li>
+</ul>
+<h3 id="3、删除表"><a href="#3、删除表" class="headerlink" title="3、删除表"></a>3、删除表</h3><pre><code>try? Person.dropTable()
+</code></pre><h3 id="4、异步事务（重点来了…-）"><a href="#4、异步事务（重点来了…-）" class="headerlink" title="4、异步事务（重点来了….）"></a>4、异步事务（重点来了….）</h3><ul>
+<li>建议把所有的insert，update，delete操作和alter表的代码全部放在ActiveSQLite.save代码块中。一个块中的sql操作在同一个事务当中</li>
+<li>建议所有增删改查操作用异步事务saveAsync</li>
+</ul>
+<pre><code>func makeAsync() {
+        ActiveSQLite.saveAsync({
+
+            var ps = [Person]()
+            for i in 0 ..&lt; 3 {
+                let p = Person()
+                p.name = &quot;Teacher-\(i)&quot;
+                p.price = i as NSNumber
+                ps.append(p)
+            }
+            try! Person.insertBatch(models: ps)
+
+        }, completion: { (error) in
+
+            if error != nil {
+                debugPrint(&quot;transtion fails \(error.debugDescription)&quot;)
+            }else{
+                debugPrint(&quot;transtion success&quot;)
+            }
+
+        })
+    }
+</code></pre><p>参考文章：<a href="https://blog.csdn.net/wuming_apie/article/details/77337697" target="_blank" rel="external">源头</a></p>
+<p>代码地址：<a href="https://git.coding.net/sunshilong/SwiftSQL.git" target="_blank" rel="external">Demo</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-05-07T07:11:29.948Z" itemprop="dateUpdated">2018-05-07 15:11:29</time>
+</span><br>
+
+
+        
+        临渊羡鱼，不如退而结网。
+        
+    </div>
+    <footer>
+        <a href="http://SunShiLong.github.io">
+            <img src="/img/avatar.jpg" alt="孙世龙">
+            孙世龙
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/&title=《No title》 — 学不车&pic=http://SunShiLong.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/&title=《No title》 — 学不车&source=一个渐渐完善的技术博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — 学不车&url=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/&via=http://SunShiLong.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/16/**蜂鸟云平台SDK使用攻略**/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">蜂鸟云平台SDK使用攻略</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>孙世龙 &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/&title=《No title》 — 学不车&pic=http://SunShiLong.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/&title=《No title》 — 学不车&source=一个渐渐完善的技术博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — 学不车&url=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/&via=http://SunShiLong.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://SunShiLong.github.io/2018/05/07/ActiveSQLite数据库操作说明/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3aQW7jMBAEQP//01lgT7swLHVzSMWH4ilQYprFABqih69XPH7+jvcn/47359ezvX8qmfl1YuDh4eEtLf3TyL+y3YJkEz/9NlkzHh4e3mleMt31otu39ORTxQbh4eHh/Spv8upPSEdKCx4eHt6X8ZLF5QHEPJjAw8PDe5KXhBGTpVxvUBIHH89a8PDw8GJe2wD7hp8P9vfw8PDwBl31tlRcRwmTTVxbLR4eHt4JXtvcun6ekNrjb3LIvikeeHh4eA/y8nA2j1zX4uDkSP3xt3h4eHgP8pLCkMep7ZZNomQ8PDy807y1VtY1b9fS20D5psuHh4eHt4nXHqPz52vBxObLWHh4eHhbee2VpjaeOBcWRzEHHh4e3gFe/uE2kmjLQ948a7cADw8Pby8vKQBr8esk4Gijh5u6h4eHh3eMNzlkT/B7Q2E8PDy853m7gtS8AJwIc/Hw8PCe5OWLzpc1mTMvFUXdw8PDwxvw8gXlL+5JgNveeoiKBB4eHt5WXhsE5M2wyUXYySH7vyd4eHh4D/Iml/LzJ2tH5DqMwMPDw9vKa6+ctkHt9WE64RUXBfI7ZXh4eHhbeW0zbN4GW5uhPdbj4eHhneC1h9Q2tmhDjfw4joeHh/ckL2lQ5XFAfgU2/8b876ObEXh4eHhjXtvW2lUq1o7j7YVaPDw8vBO8fKL2K+cxR/IPuJkNDw8P7wAvn6INHfLwN9+ONtrAw8PDO8H7KcdaGNHu7qQldnOkxsPDwxvzJpVk0v6fFJX8AgEeHh7eOV5eDJJXcB5qtLueb2JR/fDw8PAGvDyMSKYu7nltGjeFAQ8PD+8LeG3DbBLmTq5t4eHh4f0ur41lrxntohdXgoeHh3eM177Krxc9f/WvbcGGrAUPDw8vfUuPmlJJa2pXqDG5soCHh4c35v0BS54YPEcGOkYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你要去哪里？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
