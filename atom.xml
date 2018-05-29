@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://SunShiLong.github.io/"/>
-  <updated>2018-05-09T12:09:07.686Z</updated>
+  <updated>2018-05-29T10:39:49.979Z</updated>
   <id>http://SunShiLong.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS代码混淆-工具及脚本实践</title>
+    <link href="http://SunShiLong.github.io/2018/05/29/iOS%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86-%E5%B7%A5%E5%85%B7%E5%8F%8A%E8%84%9A%E6%9C%AC%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://SunShiLong.github.io/2018/05/29/iOS代码混淆-工具及脚本实践/</id>
+    <published>2018-05-29T10:40:00.000Z</published>
+    <updated>2018-05-29T10:39:49.979Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="iOS代码混淆-工具及脚本实践"><a href="#iOS代码混淆-工具及脚本实践" class="headerlink" title="iOS代码混淆-工具及脚本实践"></a>iOS代码混淆-工具及脚本实践</h1><blockquote><p>前言</p></blockquote><p>在移动端App开发过程中，代码安全是不可或缺的一步。如果不采用一些加密手段，我们的源码很有可能会被反编译，我们的自定义方法很可能被拦截。从而引发信息泄漏，造成项目损失。</p><p>这篇博客借鉴网络一些资料，对代码进行混淆加密处理，提高代码的安全性。话不多说，开始：</p><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul><li>验证工具：class-dump,用来反编译</li><li>混淆工具：sh脚本，用来混淆自定义方法</li></ul><h2 id="class-dump安装"><a href="#class-dump安装" class="headerlink" title="class-dump安装"></a>class-dump安装</h2><p>下载地址：<a href="http://stevenygard.com/projects/class-dump/" target="_blank" rel="external">传送门</a></p><h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><ul><li><p>由于Mac OS10.11，系统权限较高，Rootless限制root用户权限。采取迂回策略安装class-dump，改变环境变量，在当前user根目录下，手动创建一个bin目录</p><pre><code>mkdir ~/bin</code></pre></li><li><p>打开下载的dmg文件，复制class-dump到bin目录下，赋予可执行权限</p></li></ul><pre><code>chmod +x ~/bin/class-dump </code></pre><ul><li><p>打开bash_profile文件配置环境变量：</p><pre><code>vim ~/.bash_profile</code></pre></li><li><p>在最后加一句代码，按下esc键,再按shift+: 输入 wq进行保存退出编辑</p><pre><code>export PATH=$HOME/bin/:$PATH</code></pre></li><li><p>在Terminal中执行source ~/.bash_profile，看到where option就可以了。</p></li></ul><h2 id="脚本配置"><a href="#脚本配置" class="headerlink" title="脚本配置"></a>脚本配置</h2><h3 id="创建脚本"><a href="#创建脚本" class="headerlink" title="创建脚本"></a>创建脚本</h3><blockquote><p>新建3个文件，（用touch XXX ，创建func.list和confuse.sh，用Xcode新建codeObfuscation.h）</p></blockquote><ol><li><p>confuse.sh </p><p>脚本</p></li><li><p>func.list </p><p>将要混淆的方法列表，空着，脚本会自动填充数据</p></li><li><p>codeObfuscation.h</p><p>方法混淆数据对照表，可以看到方法混淆后的名字，空着，脚本会自动填充</p></li><li><p>将3个文件加入到项目中</p></li></ol><p>如下图<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oxftt42c0.bkt.clouddn.com/class-dump_1.jpeg" alt="文件位置" title="">                </div>                <div class="image-caption">文件位置</div>            </figure></p><h3 id="编译脚本"><a href="#编译脚本" class="headerlink" title="编译脚本"></a>编译脚本</h3><ol><li><p>添加混淆脚本头文件到PCH</p><p>  #import “codeObfuscation.h” </p></li><li><p>配置Build Phase ， 添加Run Script</p><p> /bin/sh $PROJECT_DIR/HDSSL_keepLocation/Source/confuse.sh</p><p> 如下图：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oxftt42c0.bkt.clouddn.com/class-dump_7.jpeg" alt="Build Phase" title="">                </div>                <div class="image-caption">Build Phase</div>            </figure></li></ol><ol><li><p>修改confuse.sh，为自己项目对应的路径<br>如下图</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oxftt42c0.bkt.clouddn.com/class-dump_2.jpeg" alt="头文件路径" title="">                </div>                <div class="image-caption">头文件路径</div>            </figure></li><li><p>设置统一方法前缀，我设置的是“SSL_”</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oxftt42c0.bkt.clouddn.com/class-dump_3.jpeg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></li><li><p>修改confuse.sh里的混淆头文件名，和codeObfuscation.h一致</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oxftt42c0.bkt.clouddn.com/class-dump_4.jpeg" alt="混淆头名字" title="">                </div>                <div class="image-caption">混淆头名字</div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oxftt42c0.bkt.clouddn.com/class-dump_5.jpeg" alt="codeObfuscation.h" title="">                </div>                <div class="image-caption">codeObfuscation.h</div>            </figure></li></ol><h2 id="测试脚本"><a href="#测试脚本" class="headerlink" title="测试脚本"></a>测试脚本</h2><p>clean一下项目，build，找到.app在Finder中位置，终端执行命令</p><pre><code>class-dump -H XXXA -o XXXB</code></pre><p>其中，</p><ul><li><p>XXXA是.app在Finder中的地址</p></li><li><p>XXXB是反编译结果输出文件夹地址（可以在桌面新建一个output文件夹）</p></li></ul><blockquote><p>找到你自定义方法所在的.h文件，打开可以看到，头文件已经被混淆了。</p></blockquote><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://oxftt42c0.bkt.clouddn.com/class-dump_6.jpeg" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>Done！到此代码混淆就完成了。</p><p>最后彩蛋，脚本下载地址<a href="https://github.com/longgeshashen/HSKConfuse.git" target="_blank" rel="external">传送门</a></p><p>参考资料：<br><em><em>注意：混淆的代码方法必须是在成对的.h和.m方法中。</em></em></p><p><a href="http://stevenygard.com/projects/class-dump/" target="_blank" rel="external">反编译工具</a><br><a href="https://www.jianshu.com/p/025fa775f3a6" target="_blank" rel="external">安装方法</a><br><a href="https://www.jianshu.com/p/0d42e5c6361c" target="_blank" rel="external">脚本1</a><br><a href="https://juejin.im/post/5b06578f51882538c150744b" target="_blank" rel="external">脚本2</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;iOS代码混淆-工具及脚本实践&quot;&gt;&lt;a href=&quot;#iOS代码混淆-工具及脚本实践&quot; class=&quot;headerlink&quot; title=&quot;iOS代码混淆-工具及脚本实践&quot;&gt;&lt;/a&gt;iOS代码混淆-工具及脚本实践&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;前言&lt;/p
+      
+    
+    </summary>
+    
+    
+      <category term="Objective - C" scheme="http://SunShiLong.github.io/tags/Objective-C/"/>
+    
+  </entry>
   
   <entry>
     <title>自动化打包测试之Fir.im</title>
