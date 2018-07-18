@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/class-dump_4.jpeg">
 <meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/class-dump_5.jpeg">
 <meta property="og:image" content="http://oxftt42c0.bkt.clouddn.com/class-dump_6.jpeg">
-<meta property="og:updated_time" content="2018-05-29T10:39:49.979Z">
+<meta property="og:updated_time" content="2018-07-18T09:11:15.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS代码混淆-工具及脚本实践">
 <meta name="twitter:description" content="iOS代码混淆-工具及脚本实践 前言  在移动端App开发过程中，代码安全是不可或缺的一步。如果不采用一些加密手段，我们的源码很有可能会被反编译，我们的自定义方法很可能被拦截。从而引发信息泄漏，造成项目损失。 这篇博客借鉴网络一些资料，对代码进行混淆加密处理，提高代码的安全性。话不多说，开始： 工具 验证工具：class-dump,用来反编译 混淆工具：sh脚本，用来混淆自定义方法  class-">
@@ -325,7 +325,7 @@
             </figure>
 <p>Done！到此代码混淆就完成了。</p>
 <p>最后彩蛋，脚本下载地址<a href="https://github.com/longgeshashen/HSKConfuse.git" target="_blank" rel="external">传送门</a></p>
-<p>参考资料：<br><em><em>注意：混淆的代码方法必须是在成对的.h和.m方法中。</em></em></p>
+<p>参考资料：<br><em><em>注意：1、混淆的代码方法必须是在成对的.h和.m方法中。<br>2、每次重新运行前，需要清空“codeObfuscation.h”对照表，否则Xcode会报错，原因是方法名被替换啦，你懂得</em></em></p>
 <p><a href="http://stevenygard.com/projects/class-dump/" target="_blank" rel="external">反编译工具</a><br><a href="https://www.jianshu.com/p/025fa775f3a6" target="_blank" rel="external">安装方法</a><br><a href="https://www.jianshu.com/p/0d42e5c6361c" target="_blank" rel="external">脚本1</a><br><a href="https://juejin.im/post/5b06578f51882538c150744b" target="_blank" rel="external">脚本2</a></p>
 
         </div>
@@ -334,7 +334,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-05-29T10:39:49.979Z" itemprop="dateUpdated">2018-05-29 18:39:49</time>
+    Last updated: <time datetime="2018-07-18T09:11:15.101Z" itemprop="dateUpdated">2018-07-18 17:11:15</time>
 </span><br>
 
 
