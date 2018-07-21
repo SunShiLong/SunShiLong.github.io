@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://SunShiLong.github.io/"/>
-  <updated>2018-07-21T03:43:37.614Z</updated>
+  <updated>2018-07-21T03:46:19.297Z</updated>
   <id>http://SunShiLong.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>自动化打包测试之蒲公英</title>
+    <title>代码加密Codeobscure</title>
     <link href="http://SunShiLong.github.io/2018/07/21/%E4%BB%A3%E7%A0%81%E5%8A%A0%E5%AF%86Codeobscure/"/>
     <id>http://SunShiLong.github.io/2018/07/21/代码加密Codeobscure/</id>
     <published>2018-07-21T03:00:00.000Z</published>
-    <updated>2018-07-21T03:43:37.614Z</updated>
+    <updated>2018-07-21T03:46:19.297Z</updated>
     
     <content type="html"><![CDATA[<h1 id="代码加密Codeobscure"><a href="#代码加密Codeobscure" class="headerlink" title="代码加密Codeobscure"></a>代码加密Codeobscure</h1><ul><li>该项目主要用于<strong>OC</strong>混淆代码</li><li>避免<strong>class-dump</strong>来解读代码</li><li>全自动运行</li><li>不需要额外的对工程进行操作</li></ul><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>终端运行命令</p><pre><code>gem install codeobscure</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre><code>Usage: obscure code for object-c project-o, --obscure XcodeprojPath      obscure code-l, --load path1,path2,path3     load filt symbols from path-r, --reset                      reset loaded symbols-f, --fetch type1,type2,type3    fetch and replace type,default type is [c,p,f].c for class,p for property,f for function-i, --ignore XcodeprojPath       create a ignore file, you can write your filt symbols in it.eg:name,age ...</code></pre><ul><li>-o [Xcodeproj后缀的项目文件].</li><li>-l [路径] 加载要过滤文件的路劲. 如果你不想混淆某些文件，用这个参数。</li><li>-r 重置已加载的过滤的字符，-l的过滤文件字符会保存起来，如果你下一次不需要过滤这些文件，请用该命令重置一下.</li><li>-f, –fetch type1,type2,type3 获取需要混淆的类型,默认参数是c,p,f。c代表类名，p代表属性，f代表方法。</li></ul><h3 id="先设置过滤文件夹和某些特定的名字（类名、属性名、方法名）"><a href="#先设置过滤文件夹和某些特定的名字（类名、属性名、方法名）" class="headerlink" title="先设置过滤文件夹和某些特定的名字（类名、属性名、方法名）"></a>先设置过滤文件夹和某些特定的名字（类名、属性名、方法名）</h3><ul><li><p>过滤文件夹</p><p>  -l可以接多路劲，用逗号分割</p></li></ul><p>例如：过滤Pods和Download</p><pre><code>codeobscure -o /Users/mac/Downloads/Examples/Messenger.xcodeproj  -l /Users/mac/Downloads/Examples/Pods,/Users/mac/Downloads/Examples/Download</code></pre><ul><li><p>过滤特定名字</p><p>  生成ignoresymbols文件，用于写入要过滤的关键字</p></li></ul><p>例如</p><pre><code>codeobscure -i XcodeprojPath</code></pre><p>生成ignoresymbols文件，把不想混淆的关键字写入： 例如AppDelegate等。</p><ul><li>混淆方法和属性</li></ul><p>命令</p><pre><code>codeobscure -o /Users/mac/Downloads/Examples/Messenger.xcodeproj -f f,p</code></pre><p>重置-l记录的要过滤的关键字</p><pre><code>codeobscure -r </code></pre><p>真实操作记录问题</p><p>运行codeobscure -o XXX以后，会自动生成codeObfuscation.h<br>在PCH中加入codeObfuscation.h<br>不想用的时候直接删除codeObfuscation.h文件<br>一定要设置过滤关键字codeobscure -i XcodeprojPath，写入不想过滤的关键字用英文逗号分隔开来</p><p>来自大神git<a href="https://github.com/kaich/codeobscure" target="_blank" rel="external">传送门</a></p>]]></content>
     
