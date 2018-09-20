@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://SunShiLong.github.io/"/>
-  <updated>2018-07-21T03:46:19.297Z</updated>
+  <updated>2018-09-20T07:34:02.133Z</updated>
   <id>http://SunShiLong.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于SQLite.swift封装的简单数据库</title>
+    <link href="http://SunShiLong.github.io/2018/09/20/%E5%9F%BA%E4%BA%8ESQLite.swift%E5%B0%81%E8%A3%85%E7%9A%84%E7%AE%80%E5%8D%95%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/</id>
+    <published>2018-09-19T16:00:00.000Z</published>
+    <updated>2018-09-20T07:34:02.133Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>pod ‘SQLite.swift’</p></blockquote><h2 id="1-数据类型对照表"><a href="#1-数据类型对照表" class="headerlink" title="1.  数据类型对照表"></a>1.  数据类型对照表</h2><pre><code>|---------------------------------------------------------------||   HDDBModel Type     |    SQLite.swift Type   |   SQLite Type ||----------------------|------------------------|---------------||     NSNumber         |     Int64(Int,Bool)    |     INTEGER   ||NSNumber(内部转Double) |     Double             |     REAL      ||     String           |     String             |     TEXT      ||     nil              |     nil                |     NULL      ||     Data             |     SQLite.Blob†       |     BLOB      ||     Date             |     Int64 (Date)       |     INTEGER   ||---------------------------------------------------------------|</code></pre><h2 id="2-扩展功能"><a href="#2-扩展功能" class="headerlink" title="2. 扩展功能"></a>2. 扩展功能</h2><ul><li><p>自定义主键<br>  默认的主键是‘id’，数据库自动生成的primaryKey。该库可以允许创建自定义主键，类型是Number。</p><pre><code>// 1、自定义主键（默认id）override func primaryKey() -&gt; String {    return &quot;mid&quot;}</code></pre></li></ul><ul><li><p>Double类型转换</p><p>  如果模型的属性是Double类型，设置NSNumber，数据库会自动转换类型，编码时，将所有Double类型字段通过数组返回即可。</p><pre><code>//2、NSNumber中哪个是Double值override func doubleKeys() -&gt; [String] {    return [&quot;testDouble&quot;]}</code></pre></li><li><p>忽略特殊字段</p><p>  模型中有些临时属性，不需要写入数据库的，可以通过数组返回，编码如下：</p><pre><code>//3、不创建哪个属性为数据库的字段override func exceptionKeys() -&gt; [String] {    return [&quot;hideString&quot;]}</code></pre></li></ul><blockquote><p>注：不支持的类型，对应的属性不会写入数据库。例如Bool类型</p></blockquote><h2 id="3-自动建立数据库"><a href="#3-自动建立数据库" class="headerlink" title="3. 自动建立数据库"></a>3. 自动建立数据库</h2><pre><code>修改代码，确定数据库保存路径及数据库名字即可，例如在Documents目录下创建一个名字叫‘db.sqlite3’的数据库，代码如下：    //自动创建数据库名字db.sqlite3    let dbPath = NSHomeDirectory() + &quot;/Documents&quot; + &quot;/db.sqlite3&quot;</code></pre><h2 id="4-链接现有数据库"><a href="#4-链接现有数据库" class="headerlink" title="4. 链接现有数据库"></a>4. 链接现有数据库</h2><pre><code>确定数据库的路径及名字，链接数据库即可，例如    //链接本地数据库    let dbPath: String = Bundle.main.path(forResource: &quot;DataBase&quot;, ofType: &quot;db&quot;) ?? &quot;&quot;</code></pre><h2 id="5-操作指南"><a href="#5-操作指南" class="headerlink" title="5. 操作指南"></a>5. 操作指南</h2><h3 id="模型"><a href="#模型" class="headerlink" title="* 模型"></a>* 模型</h3><p>数据模型需要继承：HDDBModel基类，例如：</p><pre><code>class TestModel: HDDBModel {    required init() {}    //测试属性    var mid: NSNumber?    var testString: String?    var hideString: String?    var testNumber: NSNumber?    var testDouble: NSNumber?    //需转换Double字段    override func doubleKeys() -&gt; [String] {        return [&quot;testDouble&quot;]    }    //忽略字段    override func exceptionKeys() -&gt; [String] {        return [&quot;hideString&quot;]    }}</code></pre><h3 id="增"><a href="#增" class="headerlink" title="* 增"></a>* 增</h3><blockquote><p>语法：model.add（）</p></blockquote><pre><code>func addDataCell(_ i: Int) {        //        let model = TestModel()        model.testString = &quot;测试数据库&quot;        model.testData = Data.init(count: 11)        model.testNumber = 129        model.testDouble = 3.1415926        model.testTime = Date.init()        let result = model.add()        print(result)}</code></pre><h3 id="删"><a href="#删" class="headerlink" title="* 删"></a>* 删</h3><blockquote><p>语法：delete（）</p></blockquote><pre><code>//删除if model.mid == 5 {    model.delete()}</code></pre><h3 id="改"><a href="#改" class="headerlink" title="* 改"></a>* 改</h3><p><code>更新所有属性,所有属性会被新值覆盖，没有新值会被空值覆盖</code></p><pre><code>语法：model.update()</code></pre><p><code>指定属性更新，将需要更新的属性的key值存入数组即可</code></p><pre><code>语法：model.update(needUpdateKeys: [&quot;key1&quot;,&quot;key2&quot;])</code></pre><h3 id="查"><a href="#查" class="headerlink" title="* 查"></a>* 查</h3><p><code>查询所有</code></p><pre><code>语法：model.query()</code></pre><p><code>通过关键字查询</code></p><pre><code>语法：model.query(whereAttAndValue: [&quot;key&quot;:&quot;测试数据库&quot;], orders: [&quot;id&quot;:true], limit: 10, offSet: 0)</code></pre><blockquote><p>注：</p><p>1、关键字可以有多个</p><p>2、orders，会对查询结果进行排序，排序属性默认是’id‘，可以修改</p><p>3、true，正序，false倒叙</p><p>4、limit，限制返回数量</p><p>5、offSet：跳过前几个查询结果，返回后面的结果</p><p>6、可以通过forEach语法，遍历查询结果</p></blockquote><h2 id="6-代码示例"><a href="#6-代码示例" class="headerlink" title="6. 代码示例"></a>6. 代码示例</h2><p><a href="https://gitee.com/sslong/HDDataBase.git" target="_blank" rel="external">Demo</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;pod ‘SQLite.swift’&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-数据类型对照表&quot;&gt;&lt;a href=&quot;#1-数据类型对照表&quot; class=&quot;headerlink&quot; title=&quot;1.  数据类型对照表&quot;&gt;&lt;/a&gt;1.  
+      
+    
+    </summary>
+    
+    
+      <category term="教程" scheme="http://SunShiLong.github.io/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>代码加密Codeobscure</title>

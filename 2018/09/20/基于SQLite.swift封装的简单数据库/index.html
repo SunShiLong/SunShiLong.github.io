@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>基于SQLite.swift封装的简单数据库 | 学不车 | 一天不学问题多，两天不学走下坡。</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="教程">
+    <meta name="description" content="pod ‘SQLite.swift’  1.  数据类型对照表|---------------------------------------------------------------| |   HDDBModel Type     |    SQLite.swift Type   |   SQLite Type | |----------------------|------------">
+<meta name="keywords" content="教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于SQLite.swift封装的简单数据库">
+<meta property="og:url" content="http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/index.html">
+<meta property="og:site_name" content="学不车">
+<meta property="og:description" content="pod ‘SQLite.swift’  1.  数据类型对照表|---------------------------------------------------------------| |   HDDBModel Type     |    SQLite.swift Type   |   SQLite Type | |----------------------|------------">
+<meta property="og:updated_time" content="2018-09-20T07:34:02.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于SQLite.swift封装的简单数据库">
+<meta name="twitter:description" content="pod ‘SQLite.swift’  1.  数据类型对照表|---------------------------------------------------------------| |   HDDBModel Type     |    SQLite.swift Type   |   SQLite Type | |----------------------|------------">
+    
+        <link rel="alternate" type="application/atom+xml" title="学不车" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">孙世龙</h5>
+          <a href="mailto:1577908011@qq.com" title="1577908011@qq.com" class="mail">1577908011@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/longgeshashen" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/龙哥杀神" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/longgeshashen"  >
+                <i class="icon icon-lg icon-link"></i>
+                推荐
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">基于SQLite.swift封装的简单数据库</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">基于SQLite.swift封装的简单数据库</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-19T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2018-09-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-数据类型对照表"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.  数据类型对照表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-扩展功能"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 扩展功能</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-自动建立数据库"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 自动建立数据库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-链接现有数据库"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. 链接现有数据库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-操作指南"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. 操作指南</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#模型"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">* 模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#增"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">* 增</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">* 删</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#改"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">* 改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">* 查</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-代码示例"><span class="post-toc-number">6.</span> <span class="post-toc-text">6. 代码示例</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-基于SQLite.swift封装的简单数据库"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">基于SQLite.swift封装的简单数据库</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-20 00:00:00" datetime="2018-09-19T16:00:00.000Z"  itemprop="datePublished">2018-09-20</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>pod ‘SQLite.swift’</p>
+</blockquote>
+<h2 id="1-数据类型对照表"><a href="#1-数据类型对照表" class="headerlink" title="1.  数据类型对照表"></a>1.  数据类型对照表</h2><pre><code>|---------------------------------------------------------------|
+|   HDDBModel Type     |    SQLite.swift Type   |   SQLite Type |
+|----------------------|------------------------|---------------|
+|     NSNumber         |     Int64(Int,Bool)    |     INTEGER   |
+|NSNumber(内部转Double) |     Double             |     REAL      |
+|     String           |     String             |     TEXT      |
+|     nil              |     nil                |     NULL      |
+|     Data             |     SQLite.Blob†       |     BLOB      |
+|     Date             |     Int64 (Date)       |     INTEGER   |
+|---------------------------------------------------------------|
+</code></pre><h2 id="2-扩展功能"><a href="#2-扩展功能" class="headerlink" title="2. 扩展功能"></a>2. 扩展功能</h2><ul>
+<li><p>自定义主键<br>  默认的主键是‘id’，数据库自动生成的primaryKey。该库可以允许创建自定义主键，类型是Number。</p>
+<pre><code>// 1、自定义主键（默认id）
+override func primaryKey() -&gt; String {
+    return &quot;mid&quot;
+}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>Double类型转换</p>
+<p>  如果模型的属性是Double类型，设置NSNumber，数据库会自动转换类型，编码时，将所有Double类型字段通过数组返回即可。</p>
+<pre><code>//2、NSNumber中哪个是Double值
+override func doubleKeys() -&gt; [String] {
+    return [&quot;testDouble&quot;]
+}
+</code></pre></li>
+<li><p>忽略特殊字段</p>
+<p>  模型中有些临时属性，不需要写入数据库的，可以通过数组返回，编码如下：</p>
+<pre><code>//3、不创建哪个属性为数据库的字段
+override func exceptionKeys() -&gt; [String] {
+    return [&quot;hideString&quot;]
+}
+</code></pre></li>
+</ul>
+<blockquote>
+<p>注：不支持的类型，对应的属性不会写入数据库。例如Bool类型</p>
+</blockquote>
+<h2 id="3-自动建立数据库"><a href="#3-自动建立数据库" class="headerlink" title="3. 自动建立数据库"></a>3. 自动建立数据库</h2><pre><code>修改代码，确定数据库保存路径及数据库名字即可，例如在Documents目录下创建一个名字叫‘db.sqlite3’的数据库，代码如下：
+
+    //自动创建数据库名字db.sqlite3
+    let dbPath = NSHomeDirectory() + &quot;/Documents&quot; + &quot;/db.sqlite3&quot;
+</code></pre><h2 id="4-链接现有数据库"><a href="#4-链接现有数据库" class="headerlink" title="4. 链接现有数据库"></a>4. 链接现有数据库</h2><pre><code>确定数据库的路径及名字，链接数据库即可，例如
+
+    //链接本地数据库
+    let dbPath: String = Bundle.main.path(forResource: &quot;DataBase&quot;, ofType: &quot;db&quot;) ?? &quot;&quot;
+</code></pre><h2 id="5-操作指南"><a href="#5-操作指南" class="headerlink" title="5. 操作指南"></a>5. 操作指南</h2><h3 id="模型"><a href="#模型" class="headerlink" title="* 模型"></a>* 模型</h3><p>数据模型需要继承：HDDBModel基类，例如：</p>
+<pre><code>class TestModel: HDDBModel {
+    required init() {}
+
+    //测试属性
+    var mid: NSNumber?
+    var testString: String?
+    var hideString: String?
+    var testNumber: NSNumber?
+    var testDouble: NSNumber?
+
+    //需转换Double字段
+    override func doubleKeys() -&gt; [String] {
+        return [&quot;testDouble&quot;]
+    }
+
+    //忽略字段
+    override func exceptionKeys() -&gt; [String] {
+        return [&quot;hideString&quot;]
+    }
+}
+</code></pre><h3 id="增"><a href="#增" class="headerlink" title="* 增"></a>* 增</h3><blockquote>
+<p>语法：model.add（）</p>
+</blockquote>
+<pre><code>func addDataCell(_ i: Int) {
+        //
+        let model = TestModel()
+
+        model.testString = &quot;测试数据库&quot;
+        model.testData = Data.init(count: 11)
+        model.testNumber = 129
+        model.testDouble = 3.1415926
+        model.testTime = Date.init()
+
+        let result = model.add()
+
+        print(result)
+}
+</code></pre><h3 id="删"><a href="#删" class="headerlink" title="* 删"></a>* 删</h3><blockquote>
+<p>语法：delete（）</p>
+</blockquote>
+<pre><code>//删除
+if model.mid == 5 {
+    model.delete()
+}
+</code></pre><h3 id="改"><a href="#改" class="headerlink" title="* 改"></a>* 改</h3><p><code>更新所有属性,所有属性会被新值覆盖，没有新值会被空值覆盖</code></p>
+<pre><code>语法：model.update()
+</code></pre><p><code>指定属性更新，将需要更新的属性的key值存入数组即可</code></p>
+<pre><code>语法：model.update(needUpdateKeys: [&quot;key1&quot;,&quot;key2&quot;])
+</code></pre><h3 id="查"><a href="#查" class="headerlink" title="* 查"></a>* 查</h3><p><code>查询所有</code></p>
+<pre><code>语法：model.query()
+</code></pre><p><code>通过关键字查询</code></p>
+<pre><code>语法：model.query(whereAttAndValue: [&quot;key&quot;:&quot;测试数据库&quot;], orders: [&quot;id&quot;:true], limit: 10, offSet: 0)
+</code></pre><blockquote>
+<p>注：</p>
+<p>1、关键字可以有多个</p>
+<p>2、orders，会对查询结果进行排序，排序属性默认是’id‘，可以修改</p>
+<p>3、true，正序，false倒叙</p>
+<p>4、limit，限制返回数量</p>
+<p>5、offSet：跳过前几个查询结果，返回后面的结果</p>
+<p>6、可以通过forEach语法，遍历查询结果</p>
+</blockquote>
+<h2 id="6-代码示例"><a href="#6-代码示例" class="headerlink" title="6. 代码示例"></a>6. 代码示例</h2><p><a href="https://gitee.com/sslong/HDDataBase.git" target="_blank" rel="external">Demo</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-20T07:34:02.133Z" itemprop="dateUpdated">2018-09-20 15:34:02</time>
+</span><br>
+
+
+        
+        临渊羡鱼，不如退而结网。
+        
+    </div>
+    <footer>
+        <a href="http://SunShiLong.github.io">
+            <img src="/img/avatar.jpg" alt="孙世龙">
+            孙世龙
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/&title=《基于SQLite.swift封装的简单数据库》 — 学不车&pic=http://SunShiLong.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/&title=《基于SQLite.swift封装的简单数据库》 — 学不车&source=一个渐渐完善的技术博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于SQLite.swift封装的简单数据库》 — 学不车&url=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/&via=http://SunShiLong.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/21/代码加密Codeobscure/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">代码加密Codeobscure</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>孙世龙 &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/&title=《基于SQLite.swift封装的简单数据库》 — 学不车&pic=http://SunShiLong.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/&title=《基于SQLite.swift封装的简单数据库》 — 学不车&source=一个渐渐完善的技术博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于SQLite.swift封装的简单数据库》 — 学不车&url=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/&via=http://SunShiLong.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://SunShiLong.github.io/2018/09/20/基于SQLite.swift封装的简单数据库/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3aQW4jMQwEQP//01lgr8F4usmR40PpFCS2h6UAokzy9YrXz//1++erv/5+Tf6ZP7/W1XMfW3h4eHij0K9Wwks+M3nv1buSLbjcVjw8PLxjvNnBnQe9eWX+RDw8PLxv4+VX5/e/Tz5nlpzw8PDwvo2XhNtekXMGHh4e3rfxkmJEWyZINiJhJ/E8UGvBw8PDi3mbBthf/fyh/h4eHh5e2VXPj928lJAUZPML+k2ceHh4eAd47ZjUpqG1uVjn5d1XWy/Bw8PDe4g3G8DKiwJtUThJUZdgPDw8vGO85OI7bEHFFYOWVPf38PDw8Na89ujPm177tlbbeIvKuHh4eHhrXl4g2Ac3e+4sgeHh4eF9kpcf9zl4k06SOG+2Eg8PD+9RXnt5fSr0TVurSDZ4eHh4B3htepgVKWatr834Fx4eHt5neO2X/9nKg2gv9MPyLh4eHl7Jax8wG5+a7e5moAEPDw/vNC85sttwZ0kljyGKDQ8PD+8Yrz18N0miLhmcboDh4eHhrUcH8gfMDvEknbSR3MSDh4eHd4z3/s3DckCwBXvwzefg4eHhPcrLBwL21+uk8V90596OKeDh4eGd422a9HnrK0kt++t7/T0ADw8Pb8Tbt6CScNurc3LcJxuHh4eHd4LXDjzlr8kf3DbDNs/Cw8PDO8Frr62zJPFsQipGEPDw8PAe4uWHbDs+lYTbHvEPT5bh4eHhrXn5kFNeGvjkVXvYT8PDw8OLeT/lysFtcXa2NTdXeTw8PLwDvHxtksf79yYF4puxqk31BQ8PD2/Eyw/lfEjrVa59msHDw8P7PC/pHM0GrZJ2Wt5yyzcIDw8P73t47ZBBW1bIRxaihISHh4f3p7xNQG1najYWdtkGw8PDwzvA24xbzYq2mxTyQJ0DDw8Pb8FrG2Dt0dy+claufeA/jIeHh3fP+webG9pPg33EGwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '你要去哪里？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '欢迎回来!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
